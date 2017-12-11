@@ -2,6 +2,9 @@ package com.star.demo2017121101;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,6 +28,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("Move");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public void click1(View v)
+    {
+        LatLng taipei2 = new LatLng(25.060, 121.556);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(taipei2, 16));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getTitle().equals("Move"))
+        {
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     /**
      * Manipulates the map once available.
@@ -43,7 +66,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng taipei = new LatLng(25.05 ,121.55);
         LatLng taipei1 = new LatLng(25.053 ,121.54);
         LatLng taipei2 = new LatLng(25.060 ,121.556);
-        mMap.addMarker(new MarkerOptions().position(taipei).title("Marker in Taipei").icon(BitmapDescriptorFactory.defaultMarker()));
+        mMap.addMarker(new MarkerOptions().position(taipei).title("Marker in Taipei").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         mMap.addMarker(new MarkerOptions().position(taipei1).title("Marker in Taipei").icon(BitmapDescriptorFactory.fromResource(R.drawable.food)));
         mMap.addMarker(new MarkerOptions().position(taipei2).title("Marker in Taipei"));
 
